@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prevcom - Fundação de Previdência Complementar do Estado de São Paulo</title>
+    <meta name="description" content="A Prevcom foi criada para administrar a Previdência Complementar de servidores públicos de São Paulo e, desde 2017, tem autorização para gerir planos de outros estados e municípios." />
+    <meta name="keywords" content="prevcom, spprev, spprevcom, previdencia, sp prevcom, sp, sao paulo, complementar, estado de sao paulo, previdencia complementar" />
+    <img src="https://www.prevcom.com.br/ParametrosDoSistema/BuscarAplicacaoLogo" />
+
+    <style>.fundo-6{background-color:#b4494b;border-color:#a64446!important;color:#fff}.fundo-7{background-color:#a22947;border-color:#932540!important;color:#fff}.fundo-8{background-color:#d44746;border-color:#c44241!important;color:#fff}.fundo-1-transparente{background-color:rgba(255,255,255,.5)!important;color:#000!important}.centralizado,.centralizado *{text-align:center!important}.bloco-img-maior-item-contem{background-size:contain!important}.menu>li>a,.navMobile .h3{font-size:1rem}.telefones{display:block}.rodape{margin-top:0}.fundacao .mapa{height:420px}.blocoAuxiliado>:first-child{flex-basis:64%}.blocoAuxiliado-lateral{flex-basis:36%}.bloco-titulo-simples{font-weight:300!important}.topo{display:flex;align-items:end}.contato-bloco p{max-width:320px}.siteMap a{font-weight:500}.siteMap a.h2{font-weight:300;font-size:1.25rem}.siteMap ul ul{max-width:240px;padding:.25rem}.siteMap ul ul li{list-style:disc;margin-left:1rem}.menu>li>a.h2.destacado,.navMobile a.h2.destacado,.siteMap a.h2.destacado{font-weight:700!important;text-transform:uppercase!important}.blocos-banners{justify-content:space-around;margin-bottom:.5rem}.blocos-banners li{flex:0 1 25%;padding:1rem;margin:0!important;min-width:160px}. .blocos-logos-videos{margin-top:1.5rem;margin-bottom:.5rem}.blocos-logos.apenas-entes li{flex:1 0 15%;padding:0 1.5rem}.blocos-logos.apenas-entes li a>img{max-width:110px;max-height:60px}body,html{height:auto!important}ul{margin-bottom:0!important}b,strong{font-weight:500!important}.container,.container-fluid,.container-lg,.container-md,.container-sm,.container-xl{box-sizing:border-box!important}</style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .tab {
+            color:white;
+            overflow: hidden;
+            border-bottom: 1px solid #ccc;
+            background-color: #000;
+            
+        }
+        .tab button {
+            background-color: inherit;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            color:white;
+        }
+        .tab button:hover {
+            background-color: #000;
+            color:white;
+        }
+        .tab button.active {
+            background-color: #0056b3;
+            color:white;
+        }
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+        .subtab {
+            margin-top: 10px;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+        .subtab button {
+            background-color: inherit;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        .subtab button:hover {
+            background-color: #ddd;
+        }
+        .subtab button.active {
+            background-color: #ccc;
+        }
+        .subtabcontent {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-top: 5px;
+        }
+        .diviframe{
+            display: flex;
+            justify-content: center;
+            align-items: center;     
+            border: 1px solid #ccc; /* Apenas para visualização */       
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container2 {
+            display: none;
+            margin-top: 20px;
+        }
+        .charts {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+        .chart-container {
+            width: 45%;
+        }
+        .chart-container.pie {
+            width: 30%;
+        }
+        .block {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .block h2 {
+            margin-top: 0;
+        }
+        .block p {
+            margin-bottom: 5px;
+        }
+        .block span {
+            font-weight: bold;
+        }
+        .subblock {
+            margin-top: 15px;
+            padding-left: 10px;
+            border-left: 2px solid #007BFF;
+        }
+        .subblock h3, .subblock h4 {
+            margin-bottom: 5px;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .nav button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .nav button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks, subtabcontent, subtablinks;
+    
+    // Hide all tab contents
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Remove active class from all tab buttons
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab content
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+
+    // Get subtablinks and subtabcontent for the current tab
+    subtablinks = document.querySelectorAll("#" + tabName + " .subtablinks");
+    subtabcontent = document.querySelectorAll("#" + tabName + " .subtabcontent");
+
+    // Hide all subtab contents
+    for (i = 0; i < subtabcontent.length; i++) {
+        subtabcontent[i].style.display = "none";
+    }
+
+    // Remove active class from all subtab buttons
+    for (i = 0; i < subtablinks.length; i++) {
+        subtablinks[i].className = subtablinks[i].className.replace(" active", "");
+    }
+
+    // Show the first subtab content and add active class to the first subtab button
+    if (subtablinks.length > 0 && subtabcontent.length > 0) {
+        subtablinks[0].className += " active";
+        subtabcontent[0].style.display = "block";
+    }
+}
+
+function openSubTab(evt, subTabName) {
+    var i, subtabcontent, subtablinks;
+    subtabcontent = document.getElementsByClassName("subtabcontent");
+    for (i = 0; i < subtabcontent.length; i++) {
+        subtabcontent[i].style.display = "none";
+    }
+    subtablinks = document.getElementsByClassName("subtablinks");
+    for (i = 0; i < subtablinks.length; i++) {
+        subtablinks[i].className = subtablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(subTabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+function showPhase(phaseId) {
+            const containers = document.querySelectorAll('.container2');
+            containers.forEach(container2 => {
+                container2.style.display = 'none';
+            });
+            document.getElementById(phaseId).style.display = 'block';
+        }
+
+    </script>
+ 
+</head>
+<body>
+
+<h2>INVENTÁRIO TECNOLÓGICO SP-PREVCOM</h2>
+
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'Administrativa')">Diretoria Administrativa</button>
+    <button class="tablinks" onclick="openTab(event, 'Seguridade')">Diretoria de Seguridade</button>
+    <button class="tablinks" onclick="openTab(event, 'Investimentos')">Diretoria de Investimentos</button>
+    <button class="tablinks" onclick="openTab(event, 'Relacionamento')">Diretoria de Relacionamento Institucional</button>
+    <button class="tablinks" onclick="openTab(event, 'TI')">Diretoria de Tecnologia da Informação</button>
+  
+</div>
+
+<div id="Administrativa" class="tabcontent">
+    <h3>Diretoria Administrativa</h3>
+    <div class="subtab">
+        <button class="subtablinks" onclick="openSubTab(event, 'Pessoas')">Gestão de Pessoas</button>
+        <button class="subtablinks" onclick="openSubTab(event, 'Contabilidade')">Contabilidade</button>
+        <button class="subtablinks" onclick="openSubTab(event, 'Contratos')">Contratações</button>
+        <button class="subtablinks" onclick="openSubTab(event, 'COFIN')">Orçamento e Finanças</button>
+    </div>
+    <div id="Pessoas" class="subtabcontent">
+        <h4>Gestão de Pessoas</h4>
+        <p>Sistema de Gestão de Pessoas</p>
+        <div id="sis_pessoas" >
+            <div class="nav">
+                <button onclick="showPhase('contratacao')">Fase 1: Contratação</button>
+                <button onclick="showPhase('frequencia')">Fase 2: Da Gestão</button>
+                <button onclick="showPhase('qualidade')">Fase 3: Qualidade de Vida no Trabalho</button>
+                <button onclick="showPhase('treinamento')">Fase 4: Desenvolvimento Profissional</button>
+            </div>
+    </div>
+    <div id="contratacao" class="container2">
+        <div class="block">
+            <h2>Fase 1: Sistema de Contratação e Gestão de Pagamento</h2>
+            <p><span>Artigo:</span> </p>
+            <p><span>Descrição:</span> Soluções de RH na plataforma NATCORP</p>
+            <p><span>SUSTENTADOR:</span> NATCORP</p>                  
+            <p><span>Gestão:</span><span style="color:red">
+            <BR>O banco de dados da Natcorp é armazenado com segurança na infraestrutura do Oracle Cloud 
+            <br> Entrada por login e senha (não vinculado ao govbr ou token de segurança)
+            </span></p>
+            <p><span>SOLUÇÃO:</span><span style="color:red">Solução aparentemente completa de RH se sobrepondo ao sistema BENNER e o de frequência  </span></p>
+            <p><span>CUSTO:</span><span style="color:red">??? </span></p>
+            <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+        </div>
+    </div>   
+        
+    <div id="frequencia" class="container2">
+        <div class="block">
+            <h2>Fase 2: Da Gestão</h2>
+            <p><span>Artigo:</span> Art. </p>
+            <p><span>Descrição:</span> Gestão de pessoas (ponto e afastamento)  </p>
+            <p><span>SUSTENTADOR:</span> </p>                  
+            <p><span>Gestão:</span><span style="color:red">??? </span></p>
+            <p><span>Chamados:</span><span style="color:red">??? </span></p>
+            <p><span>CUSTO:</span><span style="color:red">??? </span></p>
+            <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+        </div>
+    </div>
+
+    <div id="qualidade" class="container2">
+        <div class="block">
+            <h2>Fase 3: Qualidade de Vida no Trabalho</h2>
+            <p><span>Artigo:</span> Art. </p>
+            <p><span>Descrição:</span> Sistema de Controle de projetos de qualidade de vida no trabalho </p>
+            <p><span>SUSTENTADOR:</span> Microsoft </p>                  
+            <p><span>Gestão:</span><span style="color:red">PRODESP </span></p>
+            <p><span>REALIZAÇÃO:</span><span style="color:red">EXCELL??? </span></p>
+            <p><span>Chamados:</span><span style="color:red">??? </span></p>
+            <p><span>CUSTO:</span><span style="color:red">??? </span></p>
+            <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+        </div>
+    </div>
+        
+    <div id="treinamento" class="container2">
+        <div class="block">
+            <h2>Fase 4: Desenvolvimento Profissional</h2>
+            <p><span>Artigo:</span> Art. </p>
+            <p><span>Descrição:</span> Sistema de Controle de projetos de qualificação no trabalho na vida profissional junto a PREVCOM </p>
+            <p><span>SUSTENTADOR:</span> Microsoft </p>                  
+            <p><span>Gestão:</span><span style="color:red">PRODESP </span></p>
+            <p><span>REALIZAÇÃO:</span><span style="color:red">EXCELL??? </span></p>
+            <p><span>Chamados:</span><span style="color:red">??? </span></p>
+            <p><span>CUSTO:</span><span style="color:red">??? </span></p>
+            <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+        </div>
+    </div>    
+
+
+    </div>   
+        
+<!-- ===============================================================================================================  -->
+    <div id="Contabilidade" class="subtabcontent">
+        <h4>Contabilidade</h4>
+        <p>Sistema Contábil</p>
+        <div id="sis_contabil" class="diviframe">   
+        </div>          
+    </div>
+ 
+    <div id="Contratos"  class="subtabcontent">
+        <h4>Contratos Administrativos</h4>
+        <p>Sistema de controle de Contratos</p>
+        <div id="sis_contratos" >      
+            <h1>Fases de Contratação - Lei 14.133</h1>
+            <p><span>Obrigatoridade: Art. 7º :</span><span style="color:red"> 
+                <br>I - sejam, preferencialmente, servidor efetivo ou empregado público dos quadros permanentes da Administração Pública;
+                <br>II - tenham atribuições relacionadas a licitações e contratos ou possuam formação compatível ou qualificação atestada por certificação profissional emitida por escola de governo criada e mantida pelo poder público; e
+                <br>III - não sejam cônjuge ou companheiro de licitantes ou contratados habituais da Administração nem tenham com eles vínculo de parentesco, colateral ou por afinidade, até o terceiro grau, ou de natureza técnica, comercial, econômica, financeira, trabalhista e civil.
+
+            </span></p>
+            <div class="nav">
+                <button onclick="showPhase('fase1')">Fase 1: Preparatória</button>
+                <button onclick="showPhase('fase2')">Fase 2: Do Edital</button>
+                <button onclick="showPhase('fase3')">Fase 3: Propostas e Lances</button>
+                <button onclick="showPhase('fase4')">Fase 4: Julgamento</button>
+                <button onclick="showPhase('fase5')">Fase 5: Habilitação</button>
+                <button onclick="showPhase('fase6')">Fase 6: Recursal</button>
+                <button onclick="showPhase('fase7')">Fase 7: Homologação</button>
+                <button onclick="showPhase('fase8')">Fase 8: Da Gestão dos Contratos</button>
+
+            </div>
+        
+            <!-- Fase 1: Preparatória -->
+            <div id="fase1" class="container2">
+                <div class="block">
+                    <h2>Fase 1: Preparatória</h2>
+                    <p><span>Artigo:</span> Art. 17</p>
+                    <p><span>Descrição:</span> Planejamento da contratação.</p>
+                    <div class="subblock">
+                        <h3>Subfase 1.1: Plano de Contratação Anual (PCA)</h3>
+                        <p><span>Artigo:</span> Art. 18</p>
+                        <p><span>Descrição:</span> Definição do plano de contratações da instituição.</p>
+                        <p><span>Atual:</span><span style="color:red"> Não existe do plano de contratações da instituição.</span></p>
+                        <p><span>SISTEMA:</span> <span style="color:red">COMPRAS.GOV.BR , PNCP.GOV.BR, CONTRATOS.GOV.BR, SEI </span> </p>
+                        <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+                    </div>
+                    <div class="subblock">
+                        <h3>Subfase 1.2: Documento de Formalização da Demanda (DFD)</h3>
+                        <p><span>Artigo:</span> Art. 18</p>
+                        <p><span>Descrição:</span> Formalização das necessidades que geram a contratação.</p>
+                        <p><span>Atual:</span><span style="color:red"> Feito por e-mail</span></p>
+                        <p><span>SISTEMA:</span> <span style="color:red">COMPRAS.GOV.BR , SEI </span> </p>
+                        <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+                        
+                    </div>
+                    <div class="subblock">
+                        <h3>Subfase 1.3: Produção do Estudo Técnico Preliminar (ETP)</h3>
+                        <p><span>Artigo:</span> Art. 18</p>
+                        <p><span>Descrição:</span> Análise técnica das soluções possíveis para a necessidade identificada.</p>
+                        <p><span>Atual:</span><span style="color:red"> Não realizada</span></p>
+                        <p><span>SISTEMA:</span> <span style="color:red">COMPRAS.GOV.BR , SEI </span> </p>
+                        <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+                    </div>
+                    <div class="subblock">
+                        <h3>Subfase 1.4: Termo de Referência (TR) ou Projeto Básico</h3>
+                        <p><span>Artigo:</span> Art. 18</p>
+                        <p><span>Descrição:</span> Documento que especifica o objeto da contratação.</p>
+                        <p><span>Atual:</span><span style="color:blue"> Feita pela qeuipe própria da Contratação</span><br>
+                        <span style="color:red">lançada em sistema próprio, após envio para o SEI em PDF</span></p>
+                        <p><span>SISTEMA:</span> <span style="color:red">COMPRAS.GOV.BR , SEI , BENNER </span> </p>
+                        <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+                    </div>
+                    <div class="subblock">
+                        <h3>Subfase 1.5: Gestão de Riscos</h3>
+                        <p><span>Artigo:</span> Art. 18</p>
+                        <p><span>Descrição:</span> Identificação e mitigação de riscos associados à contratação.</p>
+                        <p><span>Atual:</span><span style="color:red"> ????? </span></p>
+                        <p><span>SISTEMA:</span> <span style="color:red"> SEI, BENNER?? </span> </p>
+                        <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+                    </div>
+                    <div class="subblock">
+                        <h3>Subfase 1.6: Portaria de Equipe de Contratação</h3>
+                        <p><span>Artigo:</span> Art. 7</p>
+                        <p><span>Descrição:</span> Designação da equipe responsável pela contratação, incluindo os tipos de servidores ou empregados.</p>
+                        <p><span>Atual:</span><span style="color:red"> 
+                        <br>I - sejam, preferencialmente, servidor efetivo ou empregado público dos quadros permanentes da Administração Pública;
+                        <br>II - tenham atribuições relacionadas a licitações e contratos ou possuam formação compatível ou qualificação atestada por certificação profissional emitida por escola de governo criada e mantida pelo poder público; e
+                        <br>III - não sejam cônjuge ou companheiro de licitantes ou contratados habituais da Administração nem tenham com eles vínculo de parentesco, colateral ou por afinidade, até o terceiro grau, ou de natureza técnica, comercial, econômica, financeira, trabalhista e civil.
+                        </span></p>
+                        <p><span>SISTEMA:</span> <span style="color:red">SEI </span> </p>
+                        <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+                    </div>
+                    <div class="subblock">
+                        <h3>Subfase 1.7: Pesquisa de Preço</h3>
+                        <p><span>Artigo:</span> Art. 23</p>
+                        <p><span>Descrição:</span> Identificação e mitigação de riscos associados à contratação.</p>
+                        <p><span>Atual:</span><span style="color:red"> 
+                        <br>I - composição de custos unitários menores ou iguais à mediana do item correspondente no painel para consulta de preços ou no banco de preços em saúde disponíveis no Portal Nacional de Contratações Públicas (PNCP);
+                        <br>II - contratações similares feitas pela Administração Pública, em execução ou concluídas no período de 1 (um) ano anterior à data da pesquisa de preços, inclusive mediante sistema de registro de preços, observado o índice de atualização de preços correspondente;
+                        <br>III - utilização de dados de pesquisa publicada em mídia especializada, de tabela de referência formalmente aprovada pelo Poder Executivo federal e de sítios eletrônicos especializados ou de domínio amplo, desde que contenham a data e hora de acesso;</span></p>
+                        <p><span>SISTEMA:</span> <span style="color:red">COMPRAS.GOV.BR , SEI </span> </p>
+                        <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Fase 2: Do Edital -->
+            <div id="fase2" class="container2">
+                <div class="block">
+                    <h2>Fase 2: Do Edital</h2>
+                    <p><span>Artigo:</span> Art. 28</p>
+                    <p><span>Descrição:</span> Publicação do edital conforme o tipo de contratação.</p>
+                    <div class="subblock">
+                        <h3>Subfase 2.1: Contratação Direta</h3>
+                        <p><span>Artigo:</span> Art. 75</p>
+                        <p><span>Descrição:</span> Contratação sem licitação.</p>
+                        <p><span>SISTEMA:</span> <span style="color:red"> SEI, BENNER </span> </p>
+                        <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+                    </div>
+                    <div class="subblock">
+                        <h3>Subfase 2.2: Inexigibilidade</h3>
+                        <p><span>Artigo:</span> Art. 74</p>
+                        <p><span>Descrição:</span> Contratação quando não há competição.</p>
+                    </div>
+                    <div class="subblock">
+                        <h3>Subfase 2.3: Pregão</h3>
+                        <p><span>Artigo:</span> Art. 51</p>
+                        <p><span>Descrição:</span> Modalidade de licitação para aquisição de bens e serviços comuns.</p>
+                        <p><span>SISTEMA:</span> <span style="color:red">COMPRAS.GOV.BR , SEI, BENNER </span> </p>
+                        <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Fase 3: Propostas e Lances -->
+            <div id="fase3" class="container2">
+                <div class="block">
+                    <h2>Fase 3: Propostas e/ou Lances</h2>
+                    <p><span>Artigo:</span> Art. 33</p>
+                    <p><span>Descrição:</span> Recebimento e análise das propostas e lances dos participantes.</p>
+                    <p><span>SISTEMA:</span> <span style="color:red">COMPRAS.GOV.BR , SEI , BENNER</span> </p>
+                    <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+                </div>
+            </div>
+        
+            <!-- Fase 4: Julgamento -->
+            <div id="fase4" class="container2">
+                <div class="block">
+                    <h2>Fase 4: Decisão / Julgamento</h2>
+                    <p><span>Artigo:</span> Art. 34</p>
+                    <p><span>Descrição:</span> Avaliação das propostas conforme o tipo de contratação.</p>
+                    <div class="subblock">
+                        <h3>Subfase 4.1: Contratação Direta</h3>
+                        <p><span>Artigo:</span> Art. 75</p>
+                        <p><span>Descrição:</span> Julgamento específico para contratação direta.</p>
+                        <p><span>SISTEMA:</span> <span style="color:red">COMPRAS.GOV.BR , SEI, BENNER </span> </p>
+                        <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+                    </div>
+                    <div class="subblock">
+                        <h3>Subfase 4.2: Inexigibilidade</h3>
+                        <p><span>Artigo:</span> Art. 74</p>
+                        <p><span>Descrição:</span> Julgamento específico para inexigibilidade.</p>
+                        <p><span>SISTEMA:</span> <span style="color:red">COMPRAS.GOV.BR , SEI </span> </p>
+                        <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+                    </div>
+                    <div class="subblock">
+                        <h3>Subfase 4.3: Pregão</h3>
+                        <p><span>Artigo:</span> Art. 51</p>
+                        <p><span>Descrição:</span> Julgamento específico para pregão.</p>
+                        <p><span>SISTEMA:</span> <span style="color:red">COMPRAS.GOV.BR , SEI BENNER </span> </p>
+                        <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Fase 5: Habilitação -->
+            <div id="fase5" class="container2">
+                <div class="block">
+                    <h2>Fase 5: Habilitação</h2>
+                    <p><span>Artigo:</span> Art. 37</p>
+                    <p><span>Descrição:</span> Verificação da documentação e das condições de habilitação dos participantes.</p>
+                    <p><span>SISTEMA:</span> <span style="color:red">COMPRAS.GOV.BR , SEI, SICAF </span> </p>
+                    <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+                </div>
+            </div>
+        
+            <!-- Fase 6: Recursal -->
+            <div id="fase6" class="container2">
+                <div class="block">
+                    <h2>Fase 6: Recursal</h2>
+                    <p><span>Artigo:</span> Art. 53</p>
+                    <p><span>Descrição:</span> Etapa para interposição de recursos pelos participantes.</p>
+                    <p><span>SISTEMA:</span> <span style="color:red">COMPRAS.GOV.BR , SEI </span> </p>
+                    <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+                </div>
+            </div>
+        
+            <!-- Fase 7: Homologação -->
+            <div id="fase7" class="container2">
+                <div class="block">
+                    <h2>Fase 7: Homologação</h2>
+                    <p><span>Artigo:</span> Art. 38</p>
+                    <p><span>Descrição:</span> Homologação do resultado do processo licitatório.</p>
+                    <p><span>SISTEMA:</span> <span style="color:red">COMPRAS.GOV.BR , SEI , DOI </span> </p>
+                    <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+                </div>
+            </div>
+        
+            <!-- Fase 8: Da Gestão dos Contratos -->
+            <div id="fase8" class="container2">
+                <div class="block">
+                    <h2>Fase 8: Da Gestão dos Contratos</h2>
+                    <p><span>Artigo:</span> Art. 120</p>
+                    <p><span>Descrição:</span> Administração e fiscalização do contrato firmado.</p>
+                    <p><span>SISTEMA:</span> <span style="color:red">CONTRATOS.GOV.BR , SEI, BENNER </span> </p>
+                    <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+                    <div class="subblock">
+                        <h3>Subfase 8.1: Geração de Ordem de Serviço</h3>
+                        <p><span>Artigo:</span> Art. 120</p>
+                        <p><span>Descrição:</span> Emissão de ordem de serviço para execução do contrato.</p>
+                        <p><span>SISTEMA:</span> <span style="color:red">CONTRATOS.GOV.BR , SEI, BENNER </span> </p>
+                        <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+                    </div>
+                    <div class="subblock">
+                        <h3>Subfase 8.2: Gestão de Depreciação</h3>
+                        <p><span>Artigo:</span> Art. 120</p>
+                        <p><span>Descrição:</span> Controle da depreciação dos bens adquiridos.</p>
+                        <p><span>SISTEMA:</span> <span style="color:red">CONTRATOS.GOV.BR , SEI, BENNER,  </span> </p>
+                        <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO</span> </p>
+                    </div>
+                    <div class="subblock">
+                        <h3>Subfase 8.3: Fiscalização do Contrato</h3>
+                        <p><span>Artigo:</span> Art. 120</p>
+                        <p><span>Descrição:</span> Monitoramento do cumprimento do contrato.</p>
+                    </div>
+                    <div class="subblock">
+                        <h3>Subfase 8.4: Gestão Contábil</h3>
+                        <p><span>Artigo:</span> Art. 120</p>
+                        <p><span>Descrição:</span> Controle financeiro e contábil do contrato.</p>
+                    </div>
+                    <div class="subblock">
+                        <h3>Subfase 8.5: Entrega</h3>
+                        <p><span>Artigo:</span> Art. 120</p>
+                        <p><span>Descrição:</span> Recebimento do objeto contratado.</p>
+                    </div>
+                </div>
+            </div>   
+       </div>  
+    </div>
+    <div id="COFIN"  class="subtabcontent">
+        <h4>Orçamento e Finanças</h4>
+        <p>Sistema de Controle Orçamentário e Financeiro</p>
+        <div id="sis_cofin" class="diviframe">      
+       </div>  
+    </div>
+</div>
+<!--  ========================================================================================================================= -->
+
+<div id="Seguridade" class="tabcontent">
+    <h3>Diretoria de Seguridade</h3>
+    <div class="subtab">
+        <button class="subtablinks" onclick="openSubTab(event, '1S')">1</button>
+        <button class="subtablinks" onclick="openSubTab(event, '2S')">2</button>
+        <button class="subtablinks" onclick="openSubTab(event, '3S')">3</button>
+        <button class="subtablinks" onclick="openSubTab(event, '4S')">4</button>
+    </div>
+    <div id="1S" class="subtabcontent">
+        <h4>1</h4>
+        <p>Sistema 1</p>
+        <div id="sis_1S" class="diviframe">
+        </div>
+    </div>
+    <div id="2S" class="subtabcontent">
+        <h4>2</h4>
+        <p>Sistema 2</p>
+        <div id="sis_2S" class="diviframe">
+            
+        </div>          
+    </div>
+    <div id="3S"  class="subtabcontent">
+        <h4>3</h4>
+        <p>Sistema 3</p>
+        <div id="sis_3S" class="diviframe">      
+       </div>  
+
+    </div>
+    <div id="4S"  class="subtabcontent">
+        <h4>4</h4>
+        <p>Sistema 4</p>
+        <div id="sis_4S" class="diviframe">      
+       </div>  
+
+    </div>
+</div>
+
+</div>
+<!--  ========================================================================================================================= -->
+
+<div id="Investimentos" class="tabcontent">
+    <h3>Diretoria de Investimentos</h3>
+    <div class="subtab">
+        <button class="subtablinks" onclick="openSubTab(event, '1I')">Empréstimo Inteligente Prevcom</button>
+        <button class="subtablinks" onclick="openSubTab(event, '2I')">2</button>
+        <button class="subtablinks" onclick="openSubTab(event, '3I')">3</button>
+        <button class="subtablinks" onclick="openSubTab(event, '4I')">4</button>
+    </div>
+    <div id="1I" class="subtabcontent">
+        <h4>Empréstimo Inteligente Prevcom<</h4>
+        <p>Sistema 1</p>
+        <div class="block">
+            <h2>Empréstimo PREVCOM</h2>
+            <p><span>Descrição:</span> 
+                <br>O empréstimo da Prevcom foi implementado em abril/24,
+                em parceria com a Diretoria de Investimentos.
+                <br>Criamos o nome do produto e a página de divulgação
+                no nosso site. Também acompanhamos toda a operação do
+                BTG Pactual para desenvolver o sistema de empréstimo,
+                sugerindo alterações de layout e conteúdo, além de
+                revisar fluxos e textos.</p>
+            <p><span>SISTEMA:</span> <span style="color:red">BTG PACTUAL </span> </p>
+            <p><span>INTEGRAÇÃO:</span> <span style="color:red">NÃO INTEGRADO , pode-se pensar no CONSIGNADO</span> </p>
+        </div>
+    </div>
+    <div id="2I" class="subtabcontent">
+        <h4>2</h4>
+        <p>Sistema 2</p>
+        <div id="sis_2I" class="diviframe">         
+        </div>          
+    </div>
+    <div id="3I"  class="subtabcontent">
+        <h4>3</h4>
+        <p>Sistema 3</p>
+        <div id="sis_3I" class="diviframe">      
+       </div>  
+
+    </div>
+    <div id="4I"  class="subtabcontent">
+        <h4>4</h4>
+        <p>Sistema 4</p>
+        <div id="sis_4I" class="diviframe">      
+       </div>  
+
+    </div>
+</div>
+
+<!--  ========================================================================================================================= -->
+
+<div id="Relacionamento" class="tabcontent">
+    <h3>Diretoria de Relacionamento Institucional</h3>
+    <div class="subtab">
+        <button class="subtablinks" onclick="openSubTab(event, '1R')">Redes Sociais</button>
+        <button class="subtablinks" onclick="openSubTab(event, '2R')">Assessoria de Imprensa</button>
+        <button class="subtablinks" onclick="openSubTab(event, '3R')">3</button>
+        <button class="subtablinks" onclick="openSubTab(event, '4R')">4</button>
+    </div>
+    <div id="1R" class="subtabcontent">
+        <h4>Instagram, LinkedIn, Facebook, X, YouTube</h4>
+        <p>As redes sociais da Prevcom são unificadas, e não divididas por plano.
+        <br>A que tem maior engajamento é o Instagram</p>
+        <div class="block">
+            <p><span>Instagram:</span> 1.835 seguidores, 58,7 mil contas alcançadas (mai/24) </p>
+            <p><span>LinkedIn:</span> 717 seguidores, 400 visualizações (mai/24)</p>
+            <p><span>Facebook:</span> 85,8 mil usuários alcançados (mai/24)</p>
+            <p><span>X:</span> 195 seguidores (mai/24)</p>
+            <br>
+            <p><span>FORNECEDOR:</span> PD3 </p>
+            <p><span>INTEGRAÇÃO:</span> <span style="color:red">???</span> </p>
+
+        </div>
+    </div>
+    <div id="2R" class="subtabcontent">
+        <h4>Assessoria de Imprensa</h4>
+        <p>Relacionamento entre a Prevcom e os veículos de comunicação
+        <br>Produção de conteúdo para divulgação das atividades, resultados e demandas para os jornalistas que atuam nas editorias de interesse
+            (economia, finanças pessoais, previdência e seguros)
+        <br>Preparação de notas e integração com as assessorias
+            de entes federativos conveniados
+        <br>Agendamento e acompanhamento de entrevistas
+        <br>Produção de briefing de suporte
+        <br>Monitoramento do material de imprensa que trata das atividades
+            e assuntos relevantes para a Fundação</p>
+            <div class="block">
+                <p><span>Quantidade de produção ANO:</span> <span style="color:red">???</span> </p>
+
+                <br>
+                <p><span>FORNECEDOR:</span> I’Max </p>
+                <p><span>INTEGRAÇÃO:</span> <span style="color:red">???</span> </p>
+            </div>         
+    </div>
+    <div id="3R"  class="subtabcontent">
+        <h4>3</h4>
+        <p>Sistema 3</p>
+        <div id="sis_3R" class="diviframe">      
+       </div>  
+
+    </div>
+    <div id="4R"  class="subtabcontent">
+        <h4>4</h4>
+        <p>Sistema 4</p>
+        <div id="sis_4R" class="diviframe">      
+       </div>  
+
+    </div>
+</div>
+
+<!--  ========================================================================================================================= -->
+
+<div id="TI" class="tabcontent">
+    <h3>Diretoria de Tecnologia da Informação</h3>
+    <div class="subtab">
+        <button class="subtablinks" onclick="openSubTab(event, '4T')">Sistemas Bases</button>
+        <button class="subtablinks" onclick="openSubTab(event, '1T')">Hardware de Infraestrutura</button>
+        <button class="subtablinks" onclick="openSubTab(event, '2T')">Equipamentos usuários</button>
+        <button class="subtablinks" onclick="openSubTab(event, '3T')">Infraestrutura de Redes</button>
+        
+    </div>
+    <div id="4T"  class="subtabcontent">
+        <h1>Sistemas Bases</h1>
+        <div class="nav">
+            <button onclick="showPhase('SEI')">SEI</button>
+            <button onclick="showPhase('OFFICE')">OFFICE</button>
+            <button onclick="showPhase('EXTRANET')">EXTRANET</button>
+            <button onclick="showPhase('INTRANET')">INTRANET</button>
+            <button onclick="showPhase('APLICATIVOS')">APLICATIVOS</button>
+            <button onclick="showPhase('MAIL')">E-MAIL</button>
+        </div>
+    <div id="1T" class="subtabcontent">
+        <h4>Hardware de Infraestrutura</h4>
+        <p>Sistema 1</p>
+        <div id="sis_1T" class="diviframe">
+        </div>
+    </div>
+    <div id="2T" class="subtabcontent">
+        <h4>Equipamentos usuários</h4>
+        <p>Sistema 2</p>
+        <div id="sis_2T" class="diviframe">
+            
+        </div>          
+    </div>
+    <div id="3T"  class="subtabcontent">
+        <h4>Infraestrutura de Redes</h4>
+        <p>Sistema 3</p>
+        <div id="sis_3T" class="diviframe">      
+       </div>  
+
+    </div>
+
+
+        <div id="SEI" class="container2">
+            <div class="block">
+                <h2>SEI: Sistema Eletrônico de Informações </h2>
+                <p><span>SUSTENTADOR:</span> PRODESP</p>
+                
+                <p><span>Descrição:</span> sistema de gestão de processos e documentos eletrônicos, com interface amigável e práticas inovadoras de trabalho, tendo como principais características a libertação do paradigma do papel como suporte físico para documentos institucionais e o compartilhamento do conhecimento com atualização e comunicação de novos eventos em tempo real. 
+                    O SEI foi escolhido como a solução de processo eletrônico no âmbito do projeto Processo Eletrônico Nacional (PEN).</p>
+                
+                <p><span>Gestão:</span><span style="color:red">??? </span></p>
+                <p><span>Chamados:</span><span style="color:red">??? </span></p>
+                <p><span>CUSTO:</span><span style="color:red">??? </span></p>
+            </div>
+        </div>
+
+        <div id="OFFICE" class="container2">
+            <div class="block">
+                <h2>OFFICE: PAcotes de aplicativos de escritório da Microsoft </h2>
+                <p><span>SUSTENTADOR:</span> PRODESP</p>
+                
+                <p><span>Descrição:</span> Oferece a suíte completa, incluindo Word, Excel, PowerPoint, Outlook e outros softwares. O usuário pode usar os programas localmente ou na nuvem, através do portal do Office Online. 
+                    Para acessar o Office 365, é necessário ter uma conta Microsoft e assinar o serviço, com pagamentos mensais ou anuais.</p>
+                
+                <p><span>Gestão:</span><span style="color:red">??? </span></p>
+                <p><span>Chamados:</span><span style="color:red">??? </span></p>
+                <p><span>CUSTO:</span><span style="color:red">??? </span></p>
+
+            </div>
+        </div>
+   
+        <div id="EXTRANET" class="container2">
+            <div class="block">
+                <h2>EXTRANET: Página da Internet da PREVCOM </h2>
+                <p><span>SUSTENTADOR:</span> WTW, MJDS </p>                
+                <p><span>Descrição:</span> 
+                    <br>prevcom.com.br // site principal, com informações institucionais e destaque para
+                    os planos do Estado de SP (PREVCOM RP, PREVCOM RG e PREVCOM RG-UNIS)
+                    <br>prevcomms.com.br // dedicado ao PREVCOM MS
+                    <br>prevcommt.com.br // dedicado ao PREVCOM MT
+                    <br>prevcompa.com.br // dedicado ao PREVCOM PA
+                    <br>prevcomro.com.br // dedicado ao PREVCOM RO
+                    <br>prevcommulti.com.br // dedicado ao PREVCOM MULTI
+                    <br>spprevidencia.com.br // dedicado ao SP Previdência
+                </p>               
+                <p><span>Área Restrita:</span><span style="color:red"> Acessada pelos participantes com login e senha</span>
+                    Nela, é possível ver saldo e extrato do plano, fazer contribuições facultativas, atualizar informações
+                     pessoais, alterar a alíquota de contribuição, solicitar aposentadoria e institutos, entre outras ações.
+                    <br>Cada site possui sua área restrita, identificada com a marca do plano correspondente
+                </p>
+                <p><span>Área Restrita:</span><span style="color:blue">
+                    <br>Todos os sites possuem simuladores que dão uma previsão do benefício de aposentadoria. Trata-se da nossa principal
+                    ferramenta para convencimento dos servidores.
+                    <br>Os sites Prevcom, PREVCOM RO e PREVCOM PA já contam
+                    com o simulador completo, desenvolvido pela WTW.
+                    <br>Ele possibilita muito mais controle sobre as variáveis, apresenta
+                    todas as formas de recebimento dos benefícios e ainda possui
+                    uma calculadora de benefícios fiscais. 
+                    <br>Para os participantes, há uma ferramenta que permite acompanhar o plano
+                    e reajustá-lo de acordo com objetivos pessoais
+                </span></p>
+
+                <p><span>Chamados:</span><span style="color:red">??? </span></p>
+                <p><span>CUSTO:</span><span style="color:red">??? </span></p>
+                <p><span>EVOLUÇÃO:</span><span style="color:green">
+                    <br>Integração com GOVBR para login e senha / token
+                    <br> Análise de integração dos Associados no CNIS
+                 </span></p>
+
+            </div>
+        </div>  
+        <div id="INTRANET" class="container2">
+            <div class="block">
+                <h2>INTRANET: Página da Intranet da PREVCOM </h2>
+                <p><span>SUSTENTADOR:</span> WTW, MJDS </p>                
+                <p><span>Descrição:</span> Oferece a suíte completa, de informações e transparência</p>               
+                <p><span>Gestão:</span><span style="color:red">??? </span></p>
+                <p><span>Chamados:</span><span style="color:red">??? </span></p>
+                <p><span>CUSTO:</span><span style="color:red">??? </span></p>
+
+            </div>
+        </div>    
+        
+        <div id="APLICATIVOS" class="container2">
+            <div class="block">
+                <h2>Aplicativos</h2>
+                <p><span>SUSTENTADOR:</span> Infobase Interativa </p>
+                
+                <p><span>Descrição:</span> 
+                    <BR> Oferecemos aplicativos para todos os planos.
+                    <br>Eles estão disponíveis para iOS e Android e contam com uma série de funcionalidades da área restrita, tais como acompanhamento
+                    de saldo e extrato, contribuições facultativas,
+                    alteração de alíquota de contribuição
+                    e dados pessoais.
+                    <br>No app Prevcom, também é possível fazer a inscrição ao plano PREVCOM RP.
+                    </p>
+                
+                <p><span>Gestão:</span><span style="color:red">??? </span></p>
+                <p><span>Chamados:</span><span style="color:red">??? </span></p>
+                <p><span>CUSTO:</span><span style="color:red">??? </span></p>
+                <p><span>EVOLUÇÃO:</span><span style="color:green">
+                    <br>Integração com GOVBR para login e senha / token
+                    <br> Análise de integração dos Associados no CNIS
+                 </span></p>
+            </div>
+        </div>
+
+        <div id="MAIL" class="container2">
+            <div class="block">
+                <h2>E-MAIL: Pacotes de aplicativos de comunicação de escritório da Microsoft </h2>
+                <p><span>SUSTENTADOR:</span> PRODESP</p>
+                
+                <p><span>Descrição:</span> Oferece a suíte completa, de e-mail</p>
+                
+                <p><span>Gestão:</span><span style="color:red">??? </span></p>
+                <p><span>Chamados:</span><span style="color:red">??? </span></p>
+                <p><span>EVOLUÇÃO:</span><span style="color:green">
+                    <br>Integração com AD-Microsoft para login e senha / token
+                    <br> Análise de integração dos Associados no CNIS
+                 </span></p>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+
+    // Default open the first tab
+    document.getElementsByClassName("tablinks")[0].click(); 
+
+</script>
+<script>
+
+    window.onload = function() {
+        document.getElementsByClassName("tablinks")[0].click(); 
+        
+    };
+</script>
+ 
+</body>
+</html>
